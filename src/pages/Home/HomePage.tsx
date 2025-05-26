@@ -6,6 +6,8 @@ import { useStore } from "@store";
 import Contacts from "./Contacts";
 import Procedures from "./Procedures";
 
+import CountdownTimer from "../Countdown/CountdownPage";
+
 const HomePage: React.FunctionComponent = () => {
     const [organization] = useStore(state => [
         state.organization,
@@ -13,25 +15,7 @@ const HomePage: React.FunctionComponent = () => {
     ]);
 
     return (
-        <PageLayout
-            id="home-page"
-            customHeader={
-                <HomeHeader
-                    title="DỊCH VỤ CÔNG"
-                    name={organization?.name || ""}
-                />
-            }
-        >
-            <Utinities utinities={APP_UTINITIES} />
-            {/* <ListOA /> */}
-            <ListOA
-                targetDate={new Date('2024-12-31T23:59:59')}
-                onComplete={() => console.log('Countdown completed!')}
-            />
-            <Contacts />
-            <Procedures />
-            <NewsSection />
-        </PageLayout>
+        <CountdownTimer />
     );
 };
 
